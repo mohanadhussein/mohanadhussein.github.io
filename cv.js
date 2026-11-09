@@ -1,40 +1,58 @@
 /* ========== 1. EDIT YOUR DATA HERE ========== */
 
+// forkAt  = id of the commit on the parent branch where this branch starts
+// mergeAt = id of the commit on the target branch where it flows back in
+// "end" is shown as "start → end"; use "present" for things still running
 const BRANCHES = [
-  { id: "main",   label: "career",      lane: 0, color: "#2dd4bf" },
-  { id: "intern", label: "internships", lane: 1, color: "#f59e0b", from: "main", mergeInto: "main" },
-  { id: "work",   label: "experience",  lane: 2, color: "#a78bfa", from: "main" }
+  { id: "main",   label: "career",          lane: 0, color: "#2dd4bf" },
+  { id: "bscint", label: "bsc-internships", lane: 1, color: "#f59e0b",
+    from: "main", forkAt: "bsc", mergeInto: "main", mergeAt: "msc" },
+  { id: "mscint", label: "msc-internships", lane: 1, color: "#fb7185",
+    from: "main", forkAt: "msc" },
+  { id: "work",   label: "experience",      lane: 2, color: "#a78bfa",
+    from: "main", forkAt: "msc" }
 ];
 
 const COMMITS = [
   /* ---- career: education ---- */
-  { date: "2020-09", branch: "main", msg: "Start BSc Molecular Biology &amp; Genetics, Istanbul Technical University", tag: "BSc",
+  { id: "bsc", date: "2020-09", branch: "main", tag: "BSc",
+    msg: "BSc Molecular Biology & Genetics, Istanbul Technical University",
     detail: "Core courses: human and molecular genetics, probability and statistics, biochemistry, R programming, MATLAB and Python." },
-  { date: "2024-09", branch: "main", msg: "Start MSc Computational Biology &amp; Bioinformatics, University of Göttingen", tag: "MSc",
+  { id: "msc", date: "2024-09", branch: "main", tag: "MSc",
+    msg: "MSc Computational Biology & Bioinformatics, University of Göttingen",
     detail: "Core courses: bioinformatics algorithms, statistics in R, deep learning (computer vision), ML in R, Python and data science." },
 
-  /* ---- internships (fork from career, merge back) ---- */
-  { date: "2022-07", branch: "intern", msg: "Research intern, Lund University (Sweden)",
+  /* ---- internships during the BSc (fork at BSc, merge back at MSc) ---- */
+  { id: "lund", date: "2022-07", end: "2022-08", branch: "bscint",
+    msg: "Research intern, Lund University (Sweden)",
     detail: "• Designed and performed an evolutionary experiment on reproductive success between Balancer X-chromosome and wild-type D. melanogaster lines.<br>• Completed a population genetics summer course at the GENECO research school.<br>• Helped maintain D. melanogaster and M. lignano cultures." },
-  { date: "2023-03", branch: "intern", msg: "Lab assistant, MOBGAM Research Center (Istanbul)",
+  { id: "mobgam", date: "2023-03", end: "2024-06", branch: "bscint",
+    msg: "Lab assistant, MOBGAM Research Center (Istanbul)",
     detail: "• Coordinated and secured TÜBİTAK 2209-A funding to sustain and finalize a pandemic-impacted VWA1 research project in Prof. Aslıhan Tolun's human genetics lab.<br>• Isolated and prepared 200 DNA samples, followed by pre-sequencing analysis and quality control.<br>• Conducted whole exome sequencing (WES) analysis and fine mapping through linkage analysis.<br>• Reviewed Sanger, WGS and WES results and human genetic variation databases (ClinVar, dbSNP, gnomAD) prior to publishing.<br>• Established the lab's pipeline for variant calling and R-based linkage analysis.<br>• Co-authored a paper and presented a poster at ESHG 2026 (Gothenburg, Sweden)." },
-  { date: "2023-07", branch: "intern", msg: "Project intern, EPFL Brain Mind Institute (Lausanne)",
+  { id: "epfl", date: "2023-07", end: "2023-09", branch: "bscint",
+    msg: "Project intern, EPFL Brain Mind Institute (Lausanne)",
     detail: "• Investigated the impact of genetic variation on brain structure and morphology in Dmel-DGRP lines using GWAS and GSEA.<br>• Built a Docker-based pipeline for gene set enrichment analysis (GSEA) and presented results in R Shiny.<br>• Prepared micro-CT scanned brains, followed by image analysis and segmentation with DragonFly.<br>• Presented a poster at the Swiss Drosophila Meeting 2023 in Fribourg." },
-  { date: "2024-07", branch: "intern", msg: "Project intern, University of Fribourg / SIB (Switzerland)",
+  { id: "fribourg", date: "2024-07", end: "2024-09", branch: "bscint",
+    msg: "Project intern, University of Fribourg / SIB (Switzerland)",
     detail: "• Performed primary-to-tertiary analysis of low-depth NGS data using ATLAS, a Snakemake tool from Wegmann's group.<br>• Built an R pipeline to test and optimize the in-lab tool BeXY, which identifies sex-linked scaffolds through Bayesian inference." },
-  { date: "2025-08", branch: "intern", msg: "Project intern, Auditory Neuroscience Institute (DPZ, Göttingen)",
-    detail: "• Gene mapping in Middle Eastern and European families for genetic hearing loss by linkage and NGS analysis.<br>• Established a pipeline to streamline analysis of sample data." },
 
-  /* ---- experience (fork from career, still running) ---- */
-  { date: "2025-10", branch: "work", msg: "Working student, GWDG AG Computing (Göttingen)",
-    detail: "• Assisting in testing and monitoring bioinformatics tools and datasets on the GWDG HPC cluster.<br>• Developing tutorials and materials for bioinformatics tools and datasets as part of the GWDG HPC Life Science services." },
-  { date: "2026-04", branch: "work", msg: "Project intern, Max Planck Institute for Multidisciplinary Sciences", tag: "now",
-    detail: "• Developing a phylogenetic tree-reconstruction benchmark workflow in Snakemake, based on the OMA database (XML, JSON, Newick) from the Swiss Institute of Bioinformatics, to test the Söding Lab's in-house tool prior to publication." }
+  /* ---- internships during the MSc (fork at MSc) ---- */
+  { id: "dpz", date: "2025-08", end: "2025-12", branch: "mscint",
+    msg: "Project intern, Auditory Neuroscience Institute (DPZ, Göttingen)",
+    detail: "• Gene mapping in Middle Eastern and European families for genetic hearing loss by linkage and NGS analysis.<br>• Established a pipeline to streamline analysis of sample data." },
+  { id: "mpi", date: "2026-04", end: "present", branch: "mscint", tag: "now",
+    msg: "Project intern, Max Planck Institute for Multidisciplinary Sciences",
+    detail: "• Developing a phylogenetic tree-reconstruction benchmark workflow in Snakemake, based on the OMA database (XML, JSON, Newick) from the Swiss Institute of Bioinformatics, to test the Söding Lab's in-house tool prior to publication." },
+
+  /* ---- experience (fork at MSc, still running) ---- */
+  { id: "gwdg", date: "2025-10", end: "present", branch: "work", tag: "now",
+    msg: "Working student, GWDG AG Computing (Göttingen)",
+    detail: "• Assisting in testing and monitoring bioinformatics tools and datasets on the GWDG HPC cluster.<br>• Developing tutorials and materials for bioinformatics tools and datasets as part of the GWDG HPC Life Science services." }
 ];
 
 /* ========== 2. ENGINE (no need to edit) ========== */
 
-const LANE = 22, PAD = 14, FORK = 32, DOT_Y = 20;
+const LANE = 22, PAD = 14, STEP = 28, DOT_Y = 20;
 const log = document.getElementById("log");
 const raw = document.getElementById("raw");
 const toggle = document.getElementById("toggle");
@@ -57,7 +75,7 @@ sorted.forEach(c => {
   el.style.setProperty("--c", branchOf(c.branch).color);
   el.innerHTML = `
     <div class="head">
-      <time>${c.date}</time>
+      <time>${c.date}${c.end ? " → " + c.end : ""}</time>
       <span class="msg">${c.msg}${c.tag ? `<span class="tag">${c.tag}</span>` : ""}</span>
     </div>
     <p class="detail">${c.detail || ""}</p>`;
@@ -71,48 +89,37 @@ sorted.forEach(c => {
 function draw() {
   if (log.hidden) return;
   const rows = [...log.querySelectorAll(".commit")];
-  const ys = rows.map(r => r.offsetTop + DOT_Y);
-
-  const byBranch = {};
-  sorted.forEach((c, i) => (byBranch[c.branch] = byBranch[c.branch] || []).push(ys[i]));
-
-  const ext = {}, fork = {}, merge = {};
-  BRANCHES.forEach(b => {
-    const a = byBranch[b.id];
-    if (a) ext[b.id] = [Math.min(...a), Math.max(...a)];
-  });
-  BRANCHES.forEach(b => {
-    const a = byBranch[b.id];
-    if (!a) return;
-    if (b.from && ext[b.from]) {
-      fork[b.id] = Math.max(...a) + FORK;
-      ext[b.from][1] = Math.max(ext[b.from][1], fork[b.id]);
-    }
-    if (b.mergeInto && ext[b.mergeInto]) {
-      merge[b.id] = Math.min(...a) - FORK;
-      ext[b.mergeInto][0] = Math.min(ext[b.mergeInto][0], merge[b.id]);
-    }
-  });
+  const y = {};
+  sorted.forEach((c, i) => { y[c.id] = rows[i].offsetTop + DOT_Y; });
 
   let s = "";
   BRANCHES.forEach(b => {
-    if (!ext[b.id]) return;
+    const own = sorted.filter(c => c.branch === b.id).map(c => y[c.id]);
+    if (!own.length) return;
     const x = laneX(b.lane);
-    const style = `fill="none" stroke="${b.color}" stroke-width="3" stroke-linecap="round"`;
-    s += `<line x1="${x}" y1="${ext[b.id][0]}" x2="${x}" y2="${ext[b.id][1]}" ${style}/>`;
-    if (fork[b.id] !== undefined) {
-      const px = laneX(branchOf(b.from).lane), y0 = Math.max(...byBranch[b.id]), f = fork[b.id];
-      s += `<path d="M${px},${f} C${px},${y0} ${x},${f} ${x},${y0}" ${style}/>`;
+    const st = `fill="none" stroke="${b.color}" stroke-width="3" stroke-linecap="round"`;
+    let yBottom = Math.max(...own);  // oldest commit (lowest on the page)
+    let yTop = Math.min(...own);     // newest commit (highest on the page)
+
+    if (b.from) {                    // fork curve: parent commit -> up into this lane
+      const px = laneX(branchOf(b.from).lane), yF = y[b.forkAt];
+      const len = Math.min(STEP * Math.abs(b.lane - branchOf(b.from).lane), yF - yBottom);
+      s += `<path d="M${px},${yF} C${px},${yF - len / 2} ${x},${yF - len / 2} ${x},${yF - len}" ${st}/>`;
+      yBottom = yF - len;
     }
-    if (merge[b.id] !== undefined) {
-      const tx = laneX(branchOf(b.mergeInto).lane), y0 = Math.min(...byBranch[b.id]), m = merge[b.id];
-      s += `<path d="M${x},${y0} C${x},${m} ${tx},${y0} ${tx},${m}" ${style}/>`;
+    if (b.mergeInto) {               // merge curve: this lane -> target commit
+      const tx = laneX(branchOf(b.mergeInto).lane), yM = y[b.mergeAt];
+      const len = Math.min(STEP * Math.abs(b.lane - branchOf(b.mergeInto).lane), yTop - yM);
+      s += `<path d="M${x},${yM + len} C${x},${yM + len / 2} ${tx},${yM + len / 2} ${tx},${yM}" ${st}/>`;
+      yTop = yM + len;
     }
+    s += `<line x1="${x}" y1="${yTop}" x2="${x}" y2="${yBottom}" ${st}/>`;
   });
-  sorted.forEach((c, i) => {
+
+  sorted.forEach(c => {
     const b = branchOf(c.branch);
     const fill = c.tag ? `fill:${b.color}` : "fill:var(--bg)";
-    s += `<circle cx="${laneX(b.lane)}" cy="${ys[i]}" r="6" style="${fill};stroke:${b.color};stroke-width:3"/>`;
+    s += `<circle cx="${laneX(b.lane)}" cy="${y[c.id]}" r="6" style="${fill};stroke:${b.color};stroke-width:3"/>`;
   });
 
   svg.innerHTML = s;
@@ -126,7 +133,7 @@ const hash = str => {
   return h.toString(16).padStart(8, "0").slice(0, 7);
 };
 raw.textContent = sorted.map(c =>
-  `${hash(c.date + c.msg)} ${c.tag ? "(tag: " + c.tag + ") " : ""}${c.date} [${c.branch}] ${c.msg}`
+  `${hash(c.date + c.msg)} ${c.tag ? "(tag: " + c.tag + ") " : ""}${c.date}${c.end ? " → " + c.end : ""} [${c.branch}] ${c.msg}`
 ).join("\n");
 
 toggle.addEventListener("click", () => {
