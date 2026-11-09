@@ -47,17 +47,17 @@ h2 { font-size: 1.25rem; margin: 40px 0 6px; }
   min-height: 56px;
 }
 .commit.has-detail { cursor: pointer; }
-.head { display: flex; gap: 10px; line-height: 20px; }
+.head { line-height: 20px; }
 .head time {
-  flex: 0 0 56px; color: var(--muted);
+  display: block; color: var(--muted);
   font: .8rem/20px ui-monospace, Menlo, Consolas, monospace;
 }
-.msg { flex: 1; }
+.msg { display: block; }
 .tag {
   display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 4px;
   background: var(--c); color: #04120f; font-size: .75rem; font-weight: 600; line-height: 18px;
 }
-.detail { display: none; margin: 6px 0 0 66px; color: var(--muted); font-size: .92rem; }
+.detail { display: none; margin: 6px 0 0 0; color: var(--muted); font-size: .92rem; }
 .commit.open .detail { display: block; }
 .commit.has-detail .msg::after { content: " ▾"; color: var(--muted); font-size: .8rem; }
 .commit.open .msg::after { content: " ▴"; }
