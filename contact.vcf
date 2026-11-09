@@ -1,10 +1,9 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Lastname;Firstname;;;
-FN:Firstname Lastname
-ORG:Your Institution or Company
-TITLE:Your Role
-EMAIL;TYPE=INTERNET:you@example.com
-URL:https://yourusername.github.io
-URL:https://www.linkedin.com/in/your-profile
+N:Hussein;Mohanad;;;
+FN:Mohanad Hussein
+ORG:GWDG, Göttingen
+TITLE:MSc Student Comp. Bio. & Bioinformatics
+EMAIL;TYPE=INTERNET:m.hussein@stud.uni-goettingen.de
+URL:www.linkedin.com/in/mohanad-hussein
 END:VCARD
