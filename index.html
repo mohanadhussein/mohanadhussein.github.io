@@ -1,1 +1,51 @@
-  <h1>Hello BIO-Europe</h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name</title>
+  <meta name="description" content="CV, notes and contact details of Your Name.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <p class="kicker">$ whoami</p>
+  <h1>Your Name</h1>
+  <p class="lead">One sentence on what you do, e.g. "Scientist working on X, interested in Y."</p>
+  <p class="seek"><strong>At BIO-Europe:</strong> what you are looking for, e.g. "partners for ..., advice on ...".</p>
+  <div class="actions">
+    <a class="btn primary" href="contact.vcf">Save my contact</a>
+    <a class="btn" href="cv.pdf">CV (PDF)</a>
+    <a class="btn" href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
+  </div>
+</header>
+
+<main>
+  <section id="cv">
+    <h2>Career, as a git history</h2>
+    <p class="hint">Branches are things that ran in parallel. Tap a commit for details.</p>
+    <div id="legend"></div>
+    <div id="log"></div>
+    <pre id="raw" hidden></pre>
+    <button id="toggle" class="btn small">Show as git log</button>
+  </section>
+
+  <section id="blog">
+    <h2>Notes</h2>
+    <ul class="posts">
+      <li>
+        <a href="blog/first-post.html">What I'm looking for at BIO-Europe</a>
+        <time>2026-11-09</time>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>you@example.com</p>
+</footer>
+
+<script src="cv.js"></script>
+</body>
+</html>
