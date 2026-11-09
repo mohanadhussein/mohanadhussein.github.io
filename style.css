@@ -1,0 +1,76 @@
+:root {
+  --bg: #0b1220;
+  --fg: #e6edf6;
+  --muted: #8aa0b8;
+  --accent: #2dd4bf;
+  --line: #2a3a55;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+a { color: var(--accent); }
+.hero, main, footer { max-width: 720px; margin: 0 auto; padding-left: 16px; padding-right: 16px; }
+.hero { padding-top: 48px; padding-bottom: 16px; }
+.kicker { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--accent); margin: 0 0 8px; }
+h1 { font-size: 2.2rem; line-height: 1.15; margin: 0 0 12px; }
+h2 { font-size: 1.25rem; margin: 40px 0 6px; }
+.lead { font-size: 1.1rem; margin: 0 0 12px; }
+.seek { color: var(--muted); margin: 0 0 20px; }
+.hint { color: var(--muted); font-size: .9rem; margin: 0 0 14px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-block; padding: 10px 16px; border: 1px solid var(--line);
+  border-radius: 8px; color: var(--fg); background: transparent;
+  text-decoration: none; font: inherit; cursor: pointer;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #04201c; font-weight: 600; }
+.btn.small { padding: 6px 12px; font-size: .9rem; margin-top: 16px; }
+
+/* legend */
+#legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.chip {
+  font: .8rem ui-monospace, Menlo, Consolas, monospace;
+  padding: 2px 10px; border-radius: 999px; border: 1px solid var(--c); color: var(--c);
+}
+
+/* git graph */
+#log { position: relative; padding: 30px 0 10px; }
+#lines { position: absolute; top: 0; left: 0; pointer-events: none; }
+.commit {
+  padding: 10px 0 16px calc(var(--gw) + 10px);
+  min-height: 56px;
+}
+.commit.has-detail { cursor: pointer; }
+.head { display: flex; gap: 10px; line-height: 20px; }
+.head time {
+  flex: 0 0 56px; color: var(--muted);
+  font: .8rem/20px ui-monospace, Menlo, Consolas, monospace;
+}
+.msg { flex: 1; }
+.tag {
+  display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 4px;
+  background: var(--c); color: #04120f; font-size: .75rem; font-weight: 600; line-height: 18px;
+}
+.detail { display: none; margin: 6px 0 0 66px; color: var(--muted); font-size: .92rem; }
+.commit.open .detail { display: block; }
+.commit.has-detail .msg::after { content: " ▾"; color: var(--muted); font-size: .8rem; }
+.commit.open .msg::after { content: " ▴"; }
+
+/* raw git log view */
+#raw {
+  background: #070c16; border: 1px solid var(--line); border-radius: 8px;
+  padding: 12px; overflow-x: auto; font-size: .8rem; line-height: 1.6;
+}
+
+/* blog */
+.posts { list-style: none; padding: 0; margin: 0; }
+.posts li { padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; }
+.posts time { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+.post { max-width: 720px; margin: 0 auto; padding: 32px 16px; }
+footer { color: var(--muted); padding-top: 40px; padding-bottom: 40px; font-size: .9rem; }
