@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Lastname;Firstname;;;
+FN:Firstname Lastname
+ORG:Your Institution or Company
+TITLE:Your Role
+EMAIL;TYPE=INTERNET:you@example.com
+URL:https://yourusername.github.io
+URL:https://www.linkedin.com/in/your-profile
+END:VCARD
