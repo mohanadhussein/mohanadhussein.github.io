@@ -1,29 +1,35 @@
 /* ========== 1. EDIT YOUR DATA HERE ========== */
 
-// lane = horizontal position (0 = leftmost). Keep to 3-4 lanes for phones.
-// from      = branch it forked off
-// mergeInto = branch it flowed back into (leave out if it is still running)
 const BRANCHES = [
-  { id: "main",   label: "career",        lane: 0, color: "#2dd4bf" },
-  { id: "stay",   label: "research-stay", lane: 1, color: "#f59e0b", from: "main", mergeInto: "main" },
-  { id: "side",   label: "side-project",  lane: 2, color: "#a78bfa", from: "main" }
+  { id: "main",   label: "career",      lane: 0, color: "#2dd4bf" },
+  { id: "intern", label: "internships", lane: 1, color: "#f59e0b", from: "main", mergeInto: "main" },
+  { id: "work",   label: "experience",  lane: 2, color: "#a78bfa", from: "main" }
 ];
 
-// Every branch needs at least one commit. Its OLDEST commit is where it forks,
-// its NEWEST commit is where it merges. Dates are "YYYY-MM".
 const COMMITS = [
-  { date: "2016-10", branch: "main", msg: "Start BSc Biotechnology, University X" },
-  { date: "2019-10", branch: "main", msg: "Start MSc, University X" },
-  { date: "2021-04", branch: "main", msg: "Start PhD, Institute Y", tag: "PhD",
-    detail: "Project on ... supervised by ..." },
-  { date: "2022-09", branch: "stay", msg: "Research stay at Lab Z",
-    detail: "Learned method ..., 6 months abroad." },
-  { date: "2023-03", branch: "stay", msg: "Return with new method, paper submitted" },
-  { date: "2023-06", branch: "side", msg: "Start side project: ...",
-    detail: "What it is and why it matters." },
-  { date: "2025-02", branch: "main", msg: "PhD defended", tag: "v1.0" },
-  { date: "2025-04", branch: "main", msg: "Postdoc / Role at Company W", tag: "now",
-    detail: "What you do now." }
+  /* ---- career: education ---- */
+  { date: "2020-09", branch: "main", msg: "Start BSc Molecular Biology &amp; Genetics, Istanbul Technical University", tag: "BSc",
+    detail: "Core courses: human and molecular genetics, probability and statistics, biochemistry, R programming, MATLAB and Python." },
+  { date: "2024-09", branch: "main", msg: "Start MSc Computational Biology &amp; Bioinformatics, University of Göttingen", tag: "MSc",
+    detail: "Core courses: bioinformatics algorithms, statistics in R, deep learning (computer vision), ML in R, Python and data science." },
+
+  /* ---- internships (fork from career, merge back) ---- */
+  { date: "2022-07", branch: "intern", msg: "Research intern, Lund University (Sweden)",
+    detail: "• Designed and performed an evolutionary experiment on reproductive success between Balancer X-chromosome and wild-type D. melanogaster lines.<br>• Completed a population genetics summer course at the GENECO research school.<br>• Helped maintain D. melanogaster and M. lignano cultures." },
+  { date: "2023-03", branch: "intern", msg: "Lab assistant, MOBGAM Research Center (Istanbul)",
+    detail: "• Coordinated and secured TÜBİTAK 2209-A funding to sustain and finalize a pandemic-impacted VWA1 research project in Prof. Aslıhan Tolun's human genetics lab.<br>• Isolated and prepared 200 DNA samples, followed by pre-sequencing analysis and quality control.<br>• Conducted whole exome sequencing (WES) analysis and fine mapping through linkage analysis.<br>• Reviewed Sanger, WGS and WES results and human genetic variation databases (ClinVar, dbSNP, gnomAD) prior to publishing.<br>• Established the lab's pipeline for variant calling and R-based linkage analysis.<br>• Co-authored a paper and presented a poster at ESHG 2026 (Gothenburg, Sweden)." },
+  { date: "2023-07", branch: "intern", msg: "Project intern, EPFL Brain Mind Institute (Lausanne)",
+    detail: "• Investigated the impact of genetic variation on brain structure and morphology in Dmel-DGRP lines using GWAS and GSEA.<br>• Built a Docker-based pipeline for gene set enrichment analysis (GSEA) and presented results in R Shiny.<br>• Prepared micro-CT scanned brains, followed by image analysis and segmentation with DragonFly.<br>• Presented a poster at the Swiss Drosophila Meeting 2023 in Fribourg." },
+  { date: "2024-07", branch: "intern", msg: "Project intern, University of Fribourg / SIB (Switzerland)",
+    detail: "• Performed primary-to-tertiary analysis of low-depth NGS data using ATLAS, a Snakemake tool from Wegmann's group.<br>• Built an R pipeline to test and optimize the in-lab tool BeXY, which identifies sex-linked scaffolds through Bayesian inference." },
+  { date: "2025-08", branch: "intern", msg: "Project intern, Auditory Neuroscience Institute (DPZ, Göttingen)",
+    detail: "• Gene mapping in Middle Eastern and European families for genetic hearing loss by linkage and NGS analysis.<br>• Established a pipeline to streamline analysis of sample data." },
+
+  /* ---- experience (fork from career, still running) ---- */
+  { date: "2025-10", branch: "work", msg: "Working student, GWDG AG Computing (Göttingen)",
+    detail: "• Assisting in testing and monitoring bioinformatics tools and datasets on the GWDG HPC cluster.<br>• Developing tutorials and materials for bioinformatics tools and datasets as part of the GWDG HPC Life Science services." },
+  { date: "2026-04", branch: "work", msg: "Project intern, Max Planck Institute for Multidisciplinary Sciences", tag: "now",
+    detail: "• Developing a phylogenetic tree-reconstruction benchmark workflow in Snakemake, based on the OMA database (XML, JSON, Newick) from the Swiss Institute of Bioinformatics, to test the Söding Lab's in-house tool prior to publication." }
 ];
 
 /* ========== 2. ENGINE (no need to edit) ========== */
