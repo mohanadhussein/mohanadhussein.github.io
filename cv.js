@@ -1,4 +1,4 @@
-/* ========== 1. EDIT YOUR DATA HERE ========== */
+/* ========== 1. EDIT DATA HERE ========== */
 
 // forkAt  = id of the commit on the parent branch where this branch starts
 // mergeAt = id of the commit on the target branch where it flows back in
@@ -24,33 +24,33 @@ const COMMITS = [
 
   /* ---- internships during the BSc (fork at BSc, merge back at MSc) ---- */
   { id: "lund", date: "2022-07", end: "2022-08", branch: "bscint",
-    msg: "Research intern, Lund University (Lund, Sweden)",
+    msg: "Research Intern, Lund University (Lund, Sweden)",
     detail: "• Designed and performed an evolutionary experiment on reproductive success between Balancer X-chromosome and wild-type D. melanogaster lines.<br>• Completed a population genetics summer course at the GENECO research school.<br>• Helped maintain D. melanogaster and M. lignano cultures." },
   { id: "mobgam", date: "2023-03", end: "2024-06", branch: "bscint",
     msg: "Lab assistant, MOBGAM Research Center (Istanbul, Türkiye )",
     detail: "• Coordinated and secured TÜBİTAK 2209-A funding to sustain and finalize a pandemic-impacted VWA1 research project in Prof. Aslıhan Tolun's human genetics lab.<br>• Isolated and prepared 200 DNA samples, followed by pre-sequencing analysis and quality control.<br>• Conducted whole exome sequencing (WES) analysis and fine mapping through linkage analysis.<br>• Reviewed Sanger, WGS and WES results and human genetic variation databases (ClinVar, dbSNP, gnomAD) prior to publishing.<br>• Established the lab's pipeline for variant calling and R-based linkage analysis.<br>• Co-authored a paper and presented a poster at ESHG 2026 (Gothenburg, Sweden)." },
   { id: "epfl", date: "2023-07", end: "2023-09", branch: "bscint",
-    msg: "Project intern, EPFL Brain Mind Institute (Lausanne, Switzerland)",
+    msg: "Project Intern, EPFL Brain Mind Institute (Lausanne, Switzerland)",
     detail: "• Investigated the impact of genetic variation on brain structure and morphology in Dmel-DGRP lines using GWAS and GSEA.<br>• Built a Docker-based pipeline for gene set enrichment analysis (GSEA) and presented results in R Shiny.<br>• Prepared micro-CT scanned brains, followed by image analysis and segmentation with DragonFly.<br>• Presented a poster at the Swiss Drosophila Meeting 2023 in Fribourg." },
   { id: "fribourg", date: "2024-07", end: "2024-09", branch: "bscint",
-    msg: "Project intern, University of Fribourg / SIB (Fribourg, Switzerland)",
+    msg: "Project Intern, University of Fribourg / SIB (Fribourg, Switzerland)",
     detail: "• Performed primary-to-tertiary analysis of low-depth NGS data using ATLAS, a Snakemake tool from Wegmann's group.<br>• Built an R pipeline to test and optimize the in-lab tool BeXY, which identifies sex-linked scaffolds through Bayesian inference." },
 
   /* ---- internships during the MSc (fork at MSc) ---- */
   { id: "dpz", date: "2025-08", end: "2025-12", branch: "mscint",
-    msg: "Project intern, Auditory Neuroscience Institute @DPZ (Göttingen, Germany)",
+    msg: "Project Intern, Auditory Neuroscience Institute @DPZ (Göttingen, Germany)",
     detail: "• Gene mapping in Middle Eastern and European families for genetic hearing loss by linkage and NGS analysis.<br>• Established a pipeline to streamline analysis of sample data." },
   { id: "mpi", date: "2026-04", end: "present", branch: "mscint", tag: "now",
-    msg: "Project intern, Max Planck Institute for Multidisciplinary Sciences",
+    msg: "Project Intern, Max Planck Institute for Multidisciplinary Sciences",
     detail: "• Developing a phylogenetic tree-reconstruction benchmark workflow in Snakemake, based on the OMA database (XML, JSON, Newick) from the Swiss Institute of Bioinformatics, to test the Söding Lab's in-house tool prior to publication." },
 
   /* ---- experience (fork at MSc, still running) ---- */
   { id: "gwdg", date: "2025-10", end: "present", branch: "work", tag: "now",
-    msg: "Working student, GWDG AG Computing (Göttingen, Germany)",
+    msg: "Working Student, GWDG AG Computing (Göttingen, Germany)",
     detail: "• Assisting in testing and monitoring bioinformatics tools and datasets on the GWDG HPC cluster.<br>• Developing tutorials and materials for bioinformatics tools and datasets as part of the GWDG HPC Life Science services." }
 ];
 
-/* ========== 2. ENGINE (no need to edit) ========== */
+/* ========== 2. ENGINE (no edit) ========== */
 
 const LANE = 22, PAD = 14, STEP = 28, DOT_Y = 20;
 const log = document.getElementById("log");
