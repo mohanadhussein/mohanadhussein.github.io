@@ -47,7 +47,7 @@ const COMMITS = [
   /* ---- experience (fork at MSc, still running) ---- */
   { id: "gwdg", date: "2025-10", end: "present", branch: "work", tag: "now",
     msg: "Working Student, GWDG AG Computing (Göttingen, Germany)",
-    detail: "• Assisting in testing and monitoring bioinformatics tools and datasets on the GWDG HPC cluster.<br>• Developing tutorials and materials for bioinformatics tools and datasets as part of the GWDG HPC Life Science services." }
+    detail: "• Assisting in testing and monitoring bioinformatics tools (& AI Agents) and datasets on the GWDG HPC cluster.<br>• Developing tutorials and materials for bioinformatics tools and datasets as part of the GWDG HPC Life Science services." }
 ];
 
 /* ========== 2. ENGINE (no edit) ========== */
