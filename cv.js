@@ -27,7 +27,7 @@ const COMMITS = [
     msg: "Research Intern, Lund University (Lund, Sweden)",
     detail: "• Designed and performed an evolutionary experiment on reproductive success between Balancer X-chromosome and wild-type D. melanogaster lines.<br>• Completed a population genetics summer course at the GENECO research school.<br>• Helped maintain D. melanogaster and M. lignano cultures." },
   { id: "mobgam", date: "2023-03", end: "2024-06", branch: "bscint",
-    msg: "Lab assistant, MOBGAM Research Center (Istanbul, Türkiye )",
+    msg: "Lab Assistant, MOBGAM Research Center (Istanbul, Türkiye )",
     detail: "• Coordinated and secured TÜBİTAK 2209-A funding to sustain and finalize a pandemic-impacted VWA1 research project in Prof. Aslıhan Tolun's human genetics lab.<br>• Isolated and prepared 200 DNA samples, followed by pre-sequencing analysis and quality control.<br>• Conducted whole exome sequencing (WES) analysis and fine mapping through linkage analysis.<br>• Reviewed Sanger, WGS and WES results and human genetic variation databases (ClinVar, dbSNP, gnomAD) prior to publishing.<br>• Established the lab's pipeline for variant calling and R-based linkage analysis.<br>• Co-authored a paper and presented a poster at ESHG 2026 (Gothenburg, Sweden)." },
   { id: "epfl", date: "2023-07", end: "2023-09", branch: "bscint",
     msg: "Project Intern, EPFL Brain Mind Institute (Lausanne, Switzerland)",
